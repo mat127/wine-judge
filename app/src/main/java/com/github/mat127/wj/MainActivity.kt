@@ -53,8 +53,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateRating(ratingBarId: Int): Int {
         val starScore = findViewById<RatingBar>(ratingBarId).rating.toInt()
-        val conversion = starToScore[ratingBarId]?.joinToString(",", "[", "]")
-        println("$ratingBarId, $starScore, $conversion")
         return starToScore[ratingBarId]?.get(starScore) ?: 0
     }
 }
