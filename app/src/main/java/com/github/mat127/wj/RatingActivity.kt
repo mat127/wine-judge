@@ -1,12 +1,16 @@
 package com.github.mat127.wj
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.ProgressBar
 import android.widget.RatingBar
 import android.widget.TextView
 
-class MainActivity : AppCompatActivity() {
+class RatingActivity : AppCompatActivity() {
 
     private val starToScore = mapOf(
         R.id.limpidityRatingBar to intArrayOf(0,1,2,3,4,5),
@@ -26,7 +30,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_rating)
+        setSupportActionBar(findViewById(R.id.toolbar))
         for(id in starToScore.keys) {
             findViewById<RatingBar>(id)
                 .setOnRatingBarChangeListener {
@@ -36,6 +41,19 @@ class MainActivity : AppCompatActivity() {
         this.updateRating()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_rating, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_send -> {
+            this.sendRating()
+            true
+        }
+        else -> super.onOptionsItemSelected(item)
+    }
 
     private fun updateRating() {
         val rating = this.calculateRating()
@@ -55,4 +73,18 @@ class MainActivity : AppCompatActivity() {
         val starScore = findViewById<RatingBar>(ratingBarId).rating.toInt()
         return starToScore[ratingBarId]?.get(starScore) ?: 0
     }
+
+    private fun sendRating() {
+        val ratingText = this.buildRatingText()
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, ratingText)
+            type = "text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent, "wine rating")
+        startActivity(shareIntent)
+    }
+
+    private fun buildRatingText() =
+        "total score: " + this.calculateRating()
 }
