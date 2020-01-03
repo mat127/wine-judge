@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Wine Judge</string>
+    <string name="nose">Nose</string>
+    <string name="visual">Visual</string>
+    <string name="total">Total:</string>
+    <string name="visual.limpidity">limpidity</string>
+    <string name="visual.otherThanLimpidity">Aspect other than limp.</string>
+    <string name="nose.genuiness">genuiness</string>
+    <string name="nose.positiveIntensity">positive intensity</string>
+    <string name="nose.quality">quality</string>
+    <string name="taste">Taste</string>
+    <string name="taste.genuiness">genuiness</string>
+    <string name="taste.positiveIntensity">positive intensity</string>
+    <string name="taste.harmoniousPersistence">harmonious persistence</string>
+    <string name="taste.quality">quality</string>
+    <string name="harmony">Harmony</string>
+    <string name="harmony.overallJudgement">overall judgement</string>
 </resources>

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Total:"
+        android:text="@string/total"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Vzhled"
+                android:text="@string/visual"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,11 +81,11 @@
                 app:layout_constraintStart_toEndOf="@+id/visualTextView" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/limpidityTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="čirost"
+                android:text="@string/visual.limpidity"
                 app:layout_constraintBottom_toBottomOf="@+id/limpidityRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/limpidityRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/limpidityRatingBar" />
@@ -101,11 +101,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/visualDivider" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/otherThanLimpidityTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="vzhled mimo čirost"
+                android:text="@string/visual.otherThanLimpidity"
                 app:layout_constraintBottom_toBottomOf="@+id/otherThanLimpidityRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/otherThanLimpidityRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/otherThanLimpidityRatingBar" />
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Vůně"
+                android:text="@string/nose"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/otherThanLimpidityRatingBar" />
 
@@ -146,7 +146,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="čistota"
+                android:text="@string/nose.genuiness"
                 app:layout_constraintBottom_toBottomOf="@+id/noseGenuinessRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/noseGenuinessRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/noseGenuinessRatingBar" />
@@ -166,7 +166,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="pozitivní intenzita"
+                android:text="@string/nose.positiveIntensity"
                 app:layout_constraintBottom_toBottomOf="@+id/nosePositiveIntensityRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/nosePositiveIntensityRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/nosePositiveIntensityRatingBar" />
@@ -186,7 +186,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="kvalita"
+                android:text="@string/nose.quality"
                 app:layout_constraintBottom_toBottomOf="@+id/noseQualityRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/noseQualityRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/noseQualityRatingBar" />
@@ -207,7 +207,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Chuť"
+                android:text="@string/taste"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/noseQualityRatingBar" />
 
@@ -227,7 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="čistota"
+                android:text="@string/taste.genuiness"
                 app:layout_constraintBottom_toBottomOf="@+id/tasteGenuinessRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/tasteGenuinessRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/tasteGenuinessRatingBar" />
@@ -247,7 +247,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="pozitivní intenzita"
+                android:text="@string/taste.positiveIntensity"
                 app:layout_constraintBottom_toBottomOf="@+id/tastePositiveIntensityRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/tastePositiveIntensityRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/tastePositiveIntensityRatingBar" />
@@ -267,7 +267,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="harm. perzistence"
+                android:text="@string/taste.harmoniousPersistence"
                 app:layout_constraintBottom_toBottomOf="@+id/tasteHarmoniousPersistenceRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/tasteHarmoniousPersistenceRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/tasteHarmoniousPersistenceRatingBar" />
@@ -287,7 +287,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="kvalita"
+                android:text="@string/taste.quality"
                 app:layout_constraintBottom_toBottomOf="@+id/tasteQualityRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/tasteQualityRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/tasteQualityRatingBar" />
@@ -308,7 +308,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Harmonie"
+                android:text="@string/harmony"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tasteQualityRatingBar" />
 
@@ -328,8 +328,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="celkový dojem"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/harmony.overallJudgement"
+                app:layout_constraintBottom_toBottomOf="@id/harmonyOverallJudgementRatingBar"
                 app:layout_constraintEnd_toStartOf="@+id/harmonyOverallJudgementRatingBar"
                 app:layout_constraintTop_toTopOf="@+id/harmonyOverallJudgementRatingBar" />
 
