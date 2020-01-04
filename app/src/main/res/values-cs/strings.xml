@@ -15,4 +15,7 @@
     <string name="taste.harmoniousPersistence">harmonická persistence</string>
     <string name="harmony">Harmonie</string>
     <string name="harmony.overallJudgement">celkový dojem</string>
+    <string name="eliminated">vyřazeno</string>
+    <string name="sampleNumber">Číslo vzorku:</string>
+    <string name="action_send">Odeslat</string>
 </resources>

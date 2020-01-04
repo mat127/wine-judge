@@ -16,4 +16,6 @@
     <string name="harmony">Harmony</string>
     <string name="harmony.overallJudgement">overall judgement</string>
     <string name="action_send">Send</string>
+    <string name="sampleNumber">Sample No.:</string>
+    <string name="eliminated">eliminated</string>
 </resources>

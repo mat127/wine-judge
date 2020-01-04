@@ -6,9 +6,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.ProgressBar
-import android.widget.RatingBar
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 
 class RatingActivity : AppCompatActivity() {
 
@@ -35,10 +34,10 @@ class RatingActivity : AppCompatActivity() {
         for(id in starToScore.keys) {
             findViewById<RatingBar>(id)
                 .setOnRatingBarChangeListener {
-                        ratingBar, rating, fromUser -> updateRating()
+                        ratingBar, rating, fromUser -> update()
                 }
         }
-        this.updateRating()
+        this.update()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -55,27 +54,77 @@ class RatingActivity : AppCompatActivity() {
         else -> super.onOptionsItemSelected(item)
     }
 
-    private fun updateRating() {
-        val rating = this.calculateRating()
-        this.setRating(rating)
+    fun onEliminatedClick(view: View) {
+        val details = findViewById<ScrollView>(R.id.detailsScrollView)
+        if(this.isEliminatedChecked()) {
+            details.visibility = View.INVISIBLE
+            this.setScore(0)
+        }
+        else {
+            details.visibility = View.VISIBLE
+            this.update()
+        }
     }
 
-    private fun setRating(value: Int) {
+    private fun update() {
+        val rating = this.getRating()
+        this.setScore(rating.score)
+    }
+
+    private fun setScore(value: Int) {
         findViewById<TextView>(R.id.totalScoreTextView).text = value.toString()
         findViewById<ProgressBar>(R.id.totalScoreProgressBar).progress = value
     }
 
-    private fun calculateRating() = starToScore.keys.fold(0,
-        { sum, ratingBarId -> sum + calculateRating(ratingBarId) }
+    private fun getRating(): WineRating {
+        val sampleNumber = getSampleNumber()
+        return if(isEliminatedChecked())
+            EliminatedWineRating(sampleNumber)
+        else
+            CompletedWineRating(sampleNumber,
+                getVisual(),
+                getNose(),
+                getTaste(),
+                getHarmony()
+            )
+    }
+
+    private fun getSampleNumber(): Int {
+        val text = findViewById<EditText>(R.id.sampleNumberEditText).text.toString()
+        return text.toIntOrNull() ?: 0
+    }
+
+    private fun isEliminatedChecked() = findViewById<CheckBox>(R.id.eliminatedCheckBox).isChecked
+
+    private fun getVisual() = Visual(
+        getRating(R.id.limpidityRatingBar),
+        getRating(R.id.otherThanLimpidityRatingBar)
     )
 
-    private fun calculateRating(ratingBarId: Int): Int {
+    private fun getNose() = Nose(
+        getRating(R.id.noseGenuinessRatingBar),
+        getRating(R.id.nosePositiveIntensityRatingBar),
+        getRating(R.id.noseQualityRatingBar)
+    )
+
+    private fun getTaste() = Taste(
+        getRating(R.id.tasteGenuinessRatingBar),
+        getRating(R.id.tastePositiveIntensityRatingBar),
+        getRating(R.id.tasteHarmoniousPersistenceRatingBar),
+        getRating(R.id.tasteQualityRatingBar)
+    )
+
+    private fun getHarmony() = Harmony(
+        getRating(R.id.harmonyOverallJudgementRatingBar)
+    )
+
+    private fun getRating(ratingBarId: Int): Int {
         val starScore = findViewById<RatingBar>(ratingBarId).rating.toInt()
         return starToScore[ratingBarId]?.get(starScore) ?: 0
     }
 
     private fun sendRating() {
-        val ratingText = this.buildRatingText()
+        val ratingText = getRating().description
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, ratingText)
@@ -84,7 +133,4 @@ class RatingActivity : AppCompatActivity() {
         val shareIntent = Intent.createChooser(sendIntent, "wine rating")
         startActivity(shareIntent)
     }
-
-    private fun buildRatingText() =
-        "total score: " + this.calculateRating()
 }
