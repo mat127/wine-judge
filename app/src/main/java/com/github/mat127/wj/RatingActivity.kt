@@ -8,6 +8,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import it.sephiroth.android.library.numberpicker.NumberPicker
 
 class RatingActivity : AppCompatActivity() {
 
@@ -89,10 +90,8 @@ class RatingActivity : AppCompatActivity() {
             )
     }
 
-    private fun getSampleNumber(): Int {
-        val text = findViewById<EditText>(R.id.sampleNumberEditText).text.toString()
-        return text.toIntOrNull() ?: 0
-    }
+    private fun getSampleNumber() =
+        findViewById<NumberPicker>(R.id.sampleNumberPicker).progress
 
     private fun isEliminatedChecked() = findViewById<CheckBox>(R.id.eliminatedCheckBox).isChecked
 

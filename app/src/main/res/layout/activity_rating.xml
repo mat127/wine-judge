@@ -19,28 +19,31 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <TextView
-        android:id="@+id/sampleNumberLabelTextView"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/sampleNumber"
-        app:layout_constraintBaseline_toBaselineOf="@+id/sampleNumberEditText"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toBottomOf="@+id/sampleNumberPicker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sampleNumberPicker" />
 
-    <EditText
-        android:id="@+id/sampleNumberEditText"
-        android:layout_width="0dp"
+    <it.sephiroth.android.library.numberpicker.NumberPicker
+        android:id="@+id/sampleNumberPicker"
+        style="@style/NumberPicker.Filled"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="number"
-        android:text="1"
-        android:textAlignment="textEnd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sampleNumberLabelTextView"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        android:layout_marginTop="16dp"
+        android:progress="1"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:picker_max="100"
+        app:picker_min="0"
+        app:picker_orientation="vertical"
+        app:picker_stepSize="1"
+        app:picker_tracker="exponential" />
 
     <CheckBox
         android:id="@+id/eliminatedCheckBox"
@@ -50,32 +53,25 @@
         android:layout_marginTop="8dp"
         android:onClick="onEliminatedClick"
         android:text="@string/eliminated"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sampleNumberEditText" />
-
-    <TextView
-        android:id="@+id/totalLabelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/total"
-        android:textSize="30sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/totalScoreTextView"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sampleNumberPicker" />
 
     <TextView
         android:id="@+id/totalScoreTextView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:text="88"
         android:textAlignment="textEnd"
-        android:textSize="30sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toTopOf="@+id/totalScoreProgressBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/totalLabelTextView"
-        app:layout_constraintTop_toBottomOf="@+id/eliminatedCheckBox" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ProgressBar
         android:id="@+id/totalScoreProgressBar"
@@ -86,16 +82,15 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:max="100"
-        android:progress="88"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalScoreTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/eliminatedCheckBox" />
 
     <ScrollView
         android:id="@+id/detailsScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
