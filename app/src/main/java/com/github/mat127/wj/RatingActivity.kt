@@ -8,7 +8,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
-import it.sephiroth.android.library.numberpicker.NumberPicker
 
 class RatingActivity : AppCompatActivity() {
 
@@ -78,11 +77,11 @@ class RatingActivity : AppCompatActivity() {
     }
 
     private fun getRating(): WineRating {
-        val sampleNumber = getSampleNumber()
+        val sampleId = getSampleId()
         return if(isEliminatedChecked())
-            EliminatedWineRating(sampleNumber)
+            EliminatedWineRating(sampleId)
         else
-            CompletedWineRating(sampleNumber,
+            CompletedWineRating(sampleId,
                 getVisual(),
                 getNose(),
                 getTaste(),
@@ -90,10 +89,10 @@ class RatingActivity : AppCompatActivity() {
             )
     }
 
-    private fun getSampleNumber() =
-        findViewById<NumberPicker>(R.id.sampleNumberPicker).progress
+    private fun getSampleId() =
+        findViewById<EditText>(R.id.sampleEditText).text.toString()
 
-    private fun isEliminatedChecked() = findViewById<CheckBox>(R.id.eliminatedCheckBox).isChecked
+    private fun isEliminatedChecked() = findViewById<Switch>(R.id.eliminatedSwitch).isChecked
 
     private fun getVisual() = Visual(
         getRating(R.id.limpidityRatingBar),
