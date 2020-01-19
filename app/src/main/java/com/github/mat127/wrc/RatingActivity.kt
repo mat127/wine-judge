@@ -1,4 +1,4 @@
-package com.github.mat127.wj
+package com.github.mat127.wrc
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

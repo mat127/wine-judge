@@ -1,4 +1,4 @@
-package com.github.mat127.wj
+package com.github.mat127.wrc
 
 import android.os.Bundle
 import android.view.LayoutInflater

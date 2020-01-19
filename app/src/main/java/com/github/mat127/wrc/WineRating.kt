@@ -1,4 +1,4 @@
-package com.github.mat127.wj
+package com.github.mat127.wrc
 
 open abstract class WineRating(val sampleId: String) {
     abstract val eliminated: Boolean
