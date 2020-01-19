@@ -76,308 +76,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eliminatedSwitch" />
 
-    <ScrollView
-        android:id="@+id/detailsScrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/ratingTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/totalScoreProgressBar">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/visual" />
 
-            <TextView
-                android:id="@+id/visualTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/visual"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nose" />
 
-            <View
-                android:id="@+id/visualDivider"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintBottom_toBottomOf="@+id/visualTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/visualTextView" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/taste" />
 
-            <TextView
-                android:id="@+id/limpidityTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="@string/visual.limpidity"
-                app:layout_constraintBottom_toBottomOf="@+id/limpidityRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/limpidityRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/limpidityRatingBar" />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/harmony" />
+    </com.google.android.material.tabs.TabLayout>
 
-            <RatingBar
-                android:id="@+id/limpidityRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:stepSize="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/visualDivider" />
-
-            <TextView
-                android:id="@+id/otherThanLimpidityTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="@string/visual.otherThanLimpidity"
-                app:layout_constraintBottom_toBottomOf="@+id/otherThanLimpidityRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/otherThanLimpidityRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/otherThanLimpidityRatingBar" />
-
-            <RatingBar
-                android:id="@+id/otherThanLimpidityRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:stepSize="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/limpidityRatingBar" />
-
-            <TextView
-                android:id="@+id/noseTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/nose"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/otherThanLimpidityRatingBar" />
-
-            <View
-                android:id="@+id/noseDivider"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintBottom_toBottomOf="@+id/noseTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/noseTextView" />
-
-            <TextView
-                android:id="@+id/noseGenuinessTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@string/nose.genuiness"
-                app:layout_constraintBottom_toBottomOf="@+id/noseGenuinessRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/noseGenuinessRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/noseGenuinessRatingBar" />
-
-            <RatingBar
-                android:id="@+id/noseGenuinessRatingBar"
-                android:layout_width="240dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:stepSize="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/noseDivider" />
-
-            <TextView
-                android:id="@+id/nosePositiveIntensityTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@string/nose.positiveIntensity"
-                app:layout_constraintBottom_toBottomOf="@+id/nosePositiveIntensityRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/nosePositiveIntensityRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/nosePositiveIntensityRatingBar" />
-
-            <RatingBar
-                android:id="@+id/nosePositiveIntensityRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:stepSize="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/noseGenuinessRatingBar" />
-
-            <TextView
-                android:id="@+id/noseQualityTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@string/nose.quality"
-                app:layout_constraintBottom_toBottomOf="@+id/noseQualityRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/noseQualityRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/noseQualityRatingBar" />
-
-            <RatingBar
-                android:id="@+id/noseQualityRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:stepSize="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nosePositiveIntensityRatingBar" />
-
-            <TextView
-                android:id="@+id/tasteTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/taste"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/noseQualityRatingBar" />
-
-            <View
-                android:id="@+id/tasteDivider"
-                android:layout_width="339dp"
-                android:layout_height="1dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintBottom_toBottomOf="@+id/tasteTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tasteTextView" />
-
-            <TextView
-                android:id="@+id/tasteGenuinessLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@string/taste.genuiness"
-                app:layout_constraintBottom_toBottomOf="@+id/tasteGenuinessRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/tasteGenuinessRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/tasteGenuinessRatingBar" />
-
-            <RatingBar
-                android:id="@+id/tasteGenuinessRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:stepSize="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tasteDivider" />
-
-            <TextView
-                android:id="@+id/tastePositiveIntensityLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@string/taste.positiveIntensity"
-                app:layout_constraintBottom_toBottomOf="@+id/tastePositiveIntensityRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/tastePositiveIntensityRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/tastePositiveIntensityRatingBar" />
-
-            <RatingBar
-                android:id="@+id/tastePositiveIntensityRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:stepSize="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tasteGenuinessRatingBar" />
-
-            <TextView
-                android:id="@+id/tasteHarmoniousPersistenceTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@string/taste.harmoniousPersistence"
-                app:layout_constraintBottom_toBottomOf="@+id/tasteHarmoniousPersistenceRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/tasteHarmoniousPersistenceRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/tasteHarmoniousPersistenceRatingBar" />
-
-            <RatingBar
-                android:id="@+id/tasteHarmoniousPersistenceRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:stepSize="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tastePositiveIntensityRatingBar" />
-
-            <TextView
-                android:id="@+id/tasteQualityTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@string/taste.quality"
-                app:layout_constraintBottom_toBottomOf="@+id/tasteQualityRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/tasteQualityRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/tasteQualityRatingBar" />
-
-            <RatingBar
-                android:id="@+id/tasteQualityRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:stepSize="1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tasteHarmoniousPersistenceRatingBar" />
-
-            <TextView
-                android:id="@+id/harmonyTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/harmony"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tasteQualityRatingBar" />
-
-            <View
-                android:id="@+id/harmonyDivider"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintBottom_toBottomOf="@+id/harmonyTextView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/harmonyTextView" />
-
-            <TextView
-                android:id="@+id/harmonyOverallJudgementTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@string/harmony.overallJudgement"
-                app:layout_constraintBottom_toBottomOf="@id/harmonyOverallJudgementRatingBar"
-                app:layout_constraintEnd_toStartOf="@+id/harmonyOverallJudgementRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/harmonyOverallJudgementRatingBar" />
-
-            <RatingBar
-                android:id="@+id/harmonyOverallJudgementRatingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:stepSize="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/harmonyDivider" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/ratingPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/ratingTabLayout"
+        tools:layout_editor_absoluteX="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
