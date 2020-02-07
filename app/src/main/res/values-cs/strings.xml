@@ -18,4 +18,5 @@
     <string name="eliminated">vyřazeno</string>
     <string name="sampleNumber">Číslo vzorku:</string>
     <string name="action_send">Odeslat</string>
+    <string name="action_pick_account">Vyberte uživatelský účet</string>
 </resources>

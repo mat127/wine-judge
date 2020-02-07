@@ -1,4 +1,4 @@
-package com.github.mat127.wrc
+package com.github.mat127.wrc.rating
 
 open abstract class WineRating(val sampleId: String) {
     abstract val eliminated: Boolean
@@ -52,7 +52,11 @@ data class Nose(
     companion object Factory {
         fun create(genuiness: Int?, positiveIntensity: Int?, quality: Int?) =
             genuiness?.let { positiveIntensity?.let { quality?.let {
-                Nose(genuiness, positiveIntensity, quality)
+                Nose(
+                    genuiness,
+                    positiveIntensity,
+                    quality
+                )
             }}}
     }
 }
@@ -68,7 +72,12 @@ data class Taste(
     companion object Factory {
         fun create(genuiness: Int?, positiveIntensity: Int?, harmoniousPersistence: Int?, quality: Int?) =
             genuiness?.let { positiveIntensity?.let { harmoniousPersistence?. let { quality?.let {
-                Taste(genuiness, positiveIntensity, harmoniousPersistence, quality)
+                Taste(
+                    genuiness,
+                    positiveIntensity,
+                    harmoniousPersistence,
+                    quality
+                )
             }}}}
     }
 }
@@ -79,6 +88,10 @@ data class Harmony(
     val score get() = overallJudgement
 
     companion object Factory {
-        fun create(overall: Int?) = overall?.let { Harmony(overall) }
+        fun create(overall: Int?) = overall?.let {
+            Harmony(
+                overall
+            )
+        }
     }
 }

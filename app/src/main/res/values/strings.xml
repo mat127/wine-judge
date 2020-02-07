@@ -18,4 +18,5 @@
     <string name="action_send">Send</string>
     <string name="sampleNumber">Sample No.:</string>
     <string name="eliminated">eliminated</string>
+    <string name="action_pick_account">Pick a user account</string>
 </resources>

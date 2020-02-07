@@ -1,5 +1,6 @@
-package com.github.mat127.wrc
+package com.github.mat127.wrc.activity
 
+import android.accounts.AccountManager
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,20 +13,52 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.github.mat127.wrc.R
+import com.github.mat127.wrc.account.AccountDao
+import com.github.mat127.wrc.rating.*
+import com.google.android.gms.common.AccountPicker
 import com.google.android.material.tabs.TabLayout
+
+private const val REQUEST_CODE_PICK_ACCOUNT = 12345
 
 class RatingActivity : AppCompatActivity(), RatingFragment.OnRatingChangeListener {
 
     private lateinit var pager: ViewPager
 
-    private val ratingBars = RatingBarsState()
+    private val ratingBars =
+        RatingBarsState()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rating)
         setSupportActionBar(findViewById(R.id.toolbar))
         setupPager()
+        setupAccount()
         this.update()
+    }
+
+    private fun setupAccount() {
+        AccountDao.load(this)
+        if(AccountDao.accountId == null)
+            this.pickAccount()
+    }
+
+    private fun pickAccount() {
+        val intent = AccountPicker.newChooseAccountIntent(
+            null, null, arrayOf("com.google"), false, null, null, null, null
+        )
+        this.startActivityForResult(intent,
+            REQUEST_CODE_PICK_ACCOUNT
+        )
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode == REQUEST_CODE_PICK_ACCOUNT && resultCode == RESULT_OK) {
+            val id = data?.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)
+            AccountDao.set(id, this)
+        }
+        else
+            super.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun setupPager() {
@@ -48,14 +81,14 @@ class RatingActivity : AppCompatActivity(), RatingFragment.OnRatingChangeListene
         })
     }
 
-    private inner class RatingPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    private inner class RatingPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         override fun getCount() = 4
-        override fun getItem(position: Int): Fragment? = when (position) {
+        override fun getItem(position: Int): Fragment = when (position) {
             0 -> VisualRatingFragment()
             1 -> NoseRatingFragment()
             2 -> TasteRatingFragment()
             3 -> HarmonyRatingFragment()
-            else -> null
+            else -> throw IllegalArgumentException("invalid tab index $position")
         }
     }
 
@@ -68,6 +101,10 @@ class RatingActivity : AppCompatActivity(), RatingFragment.OnRatingChangeListene
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_send -> {
             this.sendRating()
+            true
+        }
+        R.id.action_pick_account -> {
+            this.pickAccount()
             true
         }
         else -> super.onOptionsItemSelected(item)
@@ -138,7 +175,11 @@ class RatingActivity : AppCompatActivity(), RatingFragment.OnRatingChangeListene
 
         fun getStars(id: Int) = this.stars[id] ?: 0
 
-        fun getScore(id: Int) = starsToScore(id, this.getStars(id))
+        fun getScore(id: Int) =
+            starsToScore(
+                id,
+                this.getStars(id)
+            )
 
         companion object StarsToScoreConverter {
 
@@ -162,7 +203,13 @@ class RatingActivity : AppCompatActivity(), RatingFragment.OnRatingChangeListene
         }
 
         fun getRating(id: String) =
-            CompletedWineRating(id, getVisual(), getNose(), getTaste(), getHarmony())
+            CompletedWineRating(
+                id,
+                getVisual(),
+                getNose(),
+                getTaste(),
+                getHarmony()
+            )
 
         fun getVisual() = Visual(
             this.getScore(R.id.limpidityRatingBar),

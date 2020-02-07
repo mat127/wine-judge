@@ -1,4 +1,4 @@
-package com.github.mat127.wrc
+package com.github.mat127.wrc.activity
 
 import android.content.Context
 import android.os.Bundle
