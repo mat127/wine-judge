@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Wine Rating Calc</string>
+    <string name="app_name" translatable="false">Wine Rating Calc</string>
     <string name="nose">Nose</string>
     <string name="visual">Visual</string>
     <string name="total">Total:</string>
