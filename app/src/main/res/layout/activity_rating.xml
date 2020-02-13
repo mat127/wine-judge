@@ -107,7 +107,9 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/ratingPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:isScrollContainer="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingTabLayout"
         tools:layout_editor_absoluteX="16dp" />
 
