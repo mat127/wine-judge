@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nose">Vůně</string>
+    <string name="visual">Vzhled</string>
+    <string name="total">Celkem:</string>
+    <string name="visual.limpidity">čirost</string>
+    <string name="visual.otherThanLimpidity">vzhled mimo čirost</string>
+    <string name="nose.genuiness">čistota</string>
+    <string name="nose.positiveIntensity">pozitivní intenzita</string>
+    <string name="nose.quality">kvalita</string>
+    <string name="taste">Chuť</string>
+    <string name="taste.genuiness">čistota</string>
+    <string name="taste.positiveIntensity">pozitivní intenzita</string>
+    <string name="taste.quality">kvalita</string>
+    <string name="taste.harmoniousPersistence">harmonická persistence</string>
+    <string name="harmony">Harmonie</string>
+    <string name="harmony.overallJudgement">celkový dojem</string>
+    <string name="eliminated">vyřazeno</string>
+    <string name="sampleNumber">Číslo vzorku:</string>
+    <string name="action_send">Odeslat</string>
+    <string name="action_pick_account">Vyberte uživatelský účet</string>
+</resources>

@@ -1,2 +1,2 @@
-include ':app'
-rootProject.name='Wine Judge'
+include ':wrc'
+rootProject.name='Wine Rating Calc'
